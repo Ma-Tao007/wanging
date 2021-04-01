@@ -1,10 +1,5 @@
 package com.util;
 
-/*
-@description
-@anther  Administrator
-@creater 2020-04-28 9:34
-*/
 public class PagingVO {
     /**
      *  分页信息 pojo类
