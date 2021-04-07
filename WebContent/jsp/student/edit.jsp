@@ -16,7 +16,7 @@
 </head>
 <body>
 	<!-- 顶栏 -->
-	<jsp:include page="top.jsp"></jsp:include>
+	<jsp:include page="../top.jsp"></jsp:include>
 	<!-- 中间主体 -->
 		<div class="container" id="content">
 		<div class="row">
@@ -24,36 +24,42 @@
 				<div class="panel panel-default">
 				    <div class="panel-heading">
 						<div class="row">
-					    	<h1 style="text-align: center;">修改药品信息</h1>
+					    	<h1 style="text-align: center;">修改学生信息</h1>
 						</div>
 				    </div>
 				    <div class="panel-body">
-						<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/drug?method=edit" id="editfrom" method="post" onsubmit="return submit()">
+						<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/student?method=edit" id="editfrom" method="post" onsubmit="return submit()">
 							  <div class="form-group">
-							    <label class="col-sm-2 control-label">药品id</label>
+							    <label class="col-sm-2 control-label">学号</label>
 							    <div class="col-sm-10">
-							      <input readonly="readonly" type="number" class="form-control" id="id" name="id" placeholder="" value="${drug.id}">
-							    <input hidden name='inputtime' value='${drug.inputtime }'>
+							      <input readonly="readonly"  class="form-control" id="sno" name="sno" placeholder="" value="${student.sno}">
+							    <input hidden name='password' value='${student.password }'>
 							    </div>
 							  </div>
 							  <div class="form-group">
-							    <label  class="col-sm-2 control-label">药品名称</label>
+							    <label  class="col-sm-2 control-label">姓名</label>
 							    <div class="col-sm-10">
-							      <input type="text" required="required" class="form-control" id="drugname" name="drugname" placeholder="请输入药品名称" value="${drug.drugname}">
+							      <input type="text" required="required" class="form-control" id="sname" name="sname" placeholder="请输入姓名" value="${student.sname}">
 							    </div>
 							  </div>
 							  <div class="form-group">
-							    <label  class="col-sm-2 control-label">价格</label>
+							    <label  class="col-sm-2 control-label">性别</label>
 							    <div class="col-sm-10">
-							      <input type="number" required="required" class="form-control" id="price" name="price" placeholder="请输入价格" value="${drug.price}">
+							      <input type="text" required="required" class="form-control" id="ssex" name="ssex" placeholder="请输入性别" value="${student.ssex}">
 							    </div>
 							  </div>
 							  <div class="form-group">
-							    <label  class="col-sm-2 control-label">数量</label>
+							    <label  class="col-sm-2 control-label">年龄</label>
 							    <div class="col-sm-10">
-							      <input type="number" required="required" class="form-control" id="num" name="num" placeholder="请输入数量" value="${drug.num}">
+							      <input type="number" required="required" class="form-control" id="sage" name="sage" placeholder="请输入年龄" value="${student.sage}">
 							    </div>
 							  </div>
+							<div class="form-group">
+								<label  class="col-sm-2 control-label">专业</label>
+								<div class="col-sm-10">
+									<input type="text" required="required" class="form-control" id="sdept" name="sdept" placeholder="请输入专业" value="${student.sdept}">
+								</div>
+							</div>
 							<div class="form-group" style="text-align: center">
 								<button class="btn btn-default" type="submit">提交</button>
 								<button class="btn btn-default" type="reset">重置</button>
@@ -70,7 +76,7 @@
 	<script type="text/javascript">
 
 	function submit(){
-        if($("#drugname").val()=="" || $("#drugname").val()==null){
+        if($("#studentname").val()=="" || $("#studentname").val()==null){
             alert("请输入药品名称")
             return false
         }

@@ -26,7 +26,8 @@ public class UserServlet extends HttpServlet {
 			//ajax请求的响应方式
 			String username = request.getParameter("username");
 			String password = request.getParameter("password");
-			response.getWriter().write(ud.login(username, password, request));
+			Integer type = Integer.parseInt(request.getParameter("type"));
+			response.getWriter().write(ud.login(username, password, request,type));
 			break;
 		case "logout":
 			//ajax退出

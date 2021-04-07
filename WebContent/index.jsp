@@ -24,6 +24,13 @@
 	                <span>密码</span>
 	                <input class='input' type="password" id="password" name='password' />
 	            </label>
+                <label>
+                    <span>类型</span>
+                    <select id="type" >
+                        <option value="0">学生</option>
+                        <option value="1">教师</option>
+                    </select>
+                </label>
 	            <button type="submit" class="submit" >登 录</button>
             </form>
         </div>
@@ -48,12 +55,12 @@
         $.ajax({
             url:"user?method=login",
             method:'post',
-            data:{'username':$("#username").val(),'password':$("#password").val()},
+            data:{'username':$("#username").val(),'password':$("#password").val(),'type':$("#type").val()},
             success:function(res){
                 if(res=='验证成功'){
                     //登陆成功跳转
                     alert(res)
-                    window.location = "drug?method=getAll";
+                    window.location = "student?method=getAll";
                 }else{
                     alert(res)
                 }

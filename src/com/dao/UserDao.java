@@ -7,6 +7,7 @@ import java.sql.Statement;
 
 import javax.servlet.http.HttpServletRequest;
 
+import com.po.Student;
 import com.po.User;
 import com.util.DBUtil;
 
@@ -18,12 +19,19 @@ public class UserDao {
 	 * @param request 
 	 * @return
 	 */
-	public String login(String username,String password, HttpServletRequest request){
-		String sql = "select * from user where username='"+username+"'";
+	public String login(String username,String password, HttpServletRequest request,Integer type){
+		//type==0 学生   1教师
+		String sql = "";
+		if(type==1){
+			sql = "select * from user where username='"+username+"'";
+		}else{
+			sql = "select * from student where cno = '"+username+"'";
+		}
 	     Connection conn = DBUtil.getConn();
 	     Statement state = null;
 	     ResultSet rs = null;
 	     User user = new User();
+	     Student student = new Student();
 	     Boolean flag = false;
 	     try {
 	         state = conn.createStatement();
@@ -31,9 +39,14 @@ public class UserDao {
 	         while(rs.next())
 	         {
 	        	 flag = true;
-	        	 user.setId(rs.getInt("id"));
-	        	 user.setUsername(rs.getString("username"));
-	        	 user.setPassword(rs.getString("password"));
+	        	 if(type==1){
+					 user.setId(rs.getInt("id"));
+					 user.setUsername(rs.getString("username"));
+					 user.setPassword(rs.getString("password"));
+				 }else{
+	        	 	student.setSno(rs.getString("sno"));
+	        	 	student.setPassword(rs.getString("password"));
+				 }
 	         }
 	     } catch (SQLException e) {
 	         e.printStackTrace();
@@ -43,9 +56,9 @@ public class UserDao {
 	     if(!flag){
 	    	 return "用户名不存在";
 	     }else{
-	    	 if(user.getPassword().equals(password)){
+	    	 if(type==1?user.getPassword().equals(password):student.getPassword().equals(password)){
 	    		 //存到session中
-	    		 request.getSession().setAttribute("userinfo", user);
+	    		 request.getSession().setAttribute("userinfo", type==1?user:student);
 	    		 return "验证成功";
 	    		 
 	    	 }else{

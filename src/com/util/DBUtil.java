@@ -12,7 +12,7 @@ import java.sql.Statement;
  */
 public class DBUtil {
     
-    public static String db_url = "jdbc:mysql://localhost:3306/drug";
+    public static String db_url = "jdbc:mysql://localhost:3306/warning";
     public static String db_user = "root";
     public static String db_pass = "123456";
     
