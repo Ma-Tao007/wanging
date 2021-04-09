@@ -25,40 +25,40 @@
 				<div class="panel panel-default">
 				    <div class="panel-heading">
 						<div class="row">
-					    	<h1 style="text-align: center;">修改学生信息</h1>
+					    	<h1 style="text-align: center;">修改学生成绩信息</h1>
 						</div>
 				    </div>
 				    <div class="panel-body">
-						<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/student?method=edit" id="editfrom" method="post" onsubmit="return submit()">
+						<form class="form-horizontal" role="form" action="${pageContext.request.contextPath}/grade?method=edit" id="editfrom" method="post" onsubmit="return submit()">
 							  <div class="form-group">
-							    <label class="col-sm-2 control-label">学号</label>
+							    <label class="col-sm-2 control-label">学生学号</label>
 							    <div class="col-sm-10">
-							      <input readonly="readonly"  class="form-control" id="sno" name="sno" placeholder="" value="${student.sno}">
-							    <input hidden name='password' value='${student.password }'>
+							      <input readonly="readonly"  class="form-control" id="sno" name="sno" placeholder="" value="${grade.sno}">
+							      <input hidden  class="form-control" id="id" name="id" placeholder="" value="${grade.id}">
 							    </div>
 							  </div>
 							  <div class="form-group">
-							    <label  class="col-sm-2 control-label">姓名</label>
+							    <label  class="col-sm-2 control-label">学生姓名</label>
 							    <div class="col-sm-10">
-							      <input type="text" required="required" class="form-control" id="sname" name="sname" placeholder="请输入姓名" value="${student.sname}">
+							      <input type="text" readonly="readonly"  required="required" class="form-control" id="sname" name="sname" placeholder="请输入姓名" value="${grade.sname}">
 							    </div>
 							  </div>
 							  <div class="form-group">
-							    <label  class="col-sm-2 control-label">性别</label>
+							    <label  class="col-sm-2 control-label">课程</label>
 							    <div class="col-sm-10">
-							      <input type="text" required="required" class="form-control" id="ssex" name="ssex" placeholder="请输入性别" value="${student.ssex}">
+							      <input type="text"  readonly="readonly"  required="required" class="form-control" id="cname" name="cname" placeholder="请输入课程" value="${grade.cname}">
 							    </div>
 							  </div>
 							  <div class="form-group">
-							    <label  class="col-sm-2 control-label">年龄</label>
+							    <label  class="col-sm-2 control-label">学分</label>
 							    <div class="col-sm-10">
-							      <input type="number" required="required" class="form-control" id="sage" name="sage" placeholder="请输入年龄" value="${student.sage}">
+							      <input type="number" readonly="readonly"  required="required" class="form-control" id="credit" name="credit" placeholder="请输入学分" value="${grade.credit}">
 							    </div>
 							  </div>
 							<div class="form-group">
-								<label  class="col-sm-2 control-label">专业</label>
+								<label  class="col-sm-2 control-label">成绩</label>
 								<div class="col-sm-10">
-									<input type="text" required="required" class="form-control" id="sdept" name="sdept" placeholder="请输入专业" value="${student.sdept}">
+									<input type="text" required="required" class="form-control" id="grade" name="grade" placeholder="请输入成绩" value="${grade.grade}">
 								</div>
 							</div>
 							<div class="form-group" style="text-align: center">

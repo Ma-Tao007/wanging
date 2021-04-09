@@ -25,7 +25,7 @@ public class UserDao {
 		if(type==1){
 			sql = "select * from user where username='"+username+"'";
 		}else{
-			sql = "select * from student where cno = '"+username+"'";
+			sql = "select * from student where sno = '"+username+"'";
 		}
 	     Connection conn = DBUtil.getConn();
 	     Statement state = null;
@@ -45,6 +45,7 @@ public class UserDao {
 					 user.setPassword(rs.getString("password"));
 				 }else{
 	        	 	student.setSno(rs.getString("sno"));
+	        	 	student.setSname(rs.getString("sname"));
 	        	 	student.setPassword(rs.getString("password"));
 				 }
 	         }
@@ -59,6 +60,7 @@ public class UserDao {
 	    	 if(type==1?user.getPassword().equals(password):student.getPassword().equals(password)){
 	    		 //存到session中
 	    		 request.getSession().setAttribute("userinfo", type==1?user:student);
+	    		 request.getSession().setAttribute("type", type);
 	    		 return "验证成功";
 	    		 
 	    	 }else{

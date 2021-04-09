@@ -5,7 +5,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>学生信息显示</title>
+	<title>预警信息显示</title>
 
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<!-- 引入bootstrap -->
@@ -41,39 +41,27 @@
 				<div class="panel panel-default">
 				    <div class="panel-heading">
 						<div class="row">
-					    	<h1 class="col-md-5">学生管理</h1>
-
-							<button class="btn btn-default col-md-2" style="margin-top: 20px" onClick="location.href='student?method=addPage'">
-								添加学生信息
-								<sapn class="glyphicon glyphicon-plus"/>
-							</button>
-
+					    	<h1 class="col-md-5">学生预警信息</h1>
 						</div>
 				    </div>
 				    <table class="table table-bordered">
 					        <thead>
 					            <tr>
 									<th>学号</th>
-									<th>姓名</th>
-									<th>性别</th>
-									<th>年龄</th>
-									<th>专业</th>
-									<th>操作</th>
+									<th>学生姓名</th>
+									<th>应修课程数</th>
+									<th>不及格数</th>
+									<th>预警情况</th>
 					            </tr>
 					        </thead>
 					        <tbody>
-							<c:forEach  items="${nlist}" var="item" varStatus="i" >
+							<c:forEach  items="${warn}" var="item"  >
 								<tr>
 									<td>${item.sno}</td>
 									<td>${item.sname}</td>
-									<td>${item.ssex}</td>
-									<td>${item.sage}</td>
-									<td>${item.sdept}</td>
-									<td>
-										<button class="btn btn-default btn-xs btn-info" onClick="location.href='student?method=editPage&sno=${item.sno}'">修改</button>
-										<button class="btn btn-default btn-xs btn-danger btn-primary" onClick="confirmd(${item.sno})">删除</button>
-										<!--弹出框-->
-									</td>
+									<td>${item.sum}</td>
+									<td>${item.nsum}</td>
+									<td>${(item.nsum<3*item.sum/4)?((item.nsum<item.sum/2)?((item.nsum<item.sum/4)?"正常":"红色"):"延长修读"):"建议退学"}</td>
 								</tr>
 							</c:forEach>
 					        </tbody>
@@ -90,22 +78,4 @@
 	</div>
 <input hidden id="contextPath" value="${pageContext.request.contextPath}">
 </body>
-	<script type="text/javascript">
-        $("#nav li:nth-child(0)").addClass("active")
-		var contextPath = $("#contextPath").val()
-
-        function confirmd(id) {
-            var msg = "您真的确定要删除吗？！";
-            if (confirm(msg)==true){
-                location.href='student?method=delete&sno='+id;
-            }else{
-                return false;
-            }
-        }
-
-        $("#sub").click(function () {
-            $("#form1").submit();
-        });
-
-	</script>
 </html>

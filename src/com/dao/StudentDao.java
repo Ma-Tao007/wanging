@@ -7,7 +7,6 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.po.Drug;
 import com.po.Student;
 import com.util.DBUtil;
 
@@ -16,11 +15,11 @@ public class StudentDao {
 
 	public boolean insert(Student student){
 		boolean f = false;
-		if(getStudentBySno(student.getSno())!=null){
+		if(getStudentBySno(student.getSno()).getSno()!=null){
 			return f;
 		}
         String sql = "insert into student(sno,sname,ssex,sage,sdept,password) values('"+student.getSno()+"'"
-        		+ ",'"+student.getSname()+"','"+student.getSex()+"',"+student.getAge()+",'"+student.getSdept()
+        		+ ",'"+student.getSname()+"','"+student.getSsex()+"',"+student.getSage()+",'"+student.getSdept()
 				+"','"+student.getPassword()+"')";
         
         Connection conn = DBUtil.getConn();
@@ -54,18 +53,19 @@ public class StudentDao {
 	         {
 				 d.setSno(rs.getString("sno"));
 				 d.setSname(rs.getString("sname"));
-				 d.setSex(rs.getString("ssex"));
-				 d.setAge(rs.getInt("sage"));
+				 d.setSsex(rs.getString("ssex"));
+				 d.setSage(rs.getInt("sage"));
 				 d.setWarning(rs.getString("warning"));
 				 d.setPassword(rs.getString("password"));
 				 d.setSdept(rs.getString("sdept"));
 	         }
+             return d;
 	     } catch (SQLException e) {
 	         e.printStackTrace();
 	     } finally {
 	         DBUtil.close(state, conn);
 	     }
-	     return d;
+	    return null;
 	}
 
     public boolean deleteById (String sno) {
@@ -135,8 +135,8 @@ public class StudentDao {
 	        	 Student d = new Student();
 	        	 d.setSno(rs.getString("sno"));
 	        	 d.setSname(rs.getString("sname"));
-	        	 d.setSex(rs.getString("ssex"));
-	        	 d.setAge(rs.getInt("sage"));
+	        	 d.setSsex(rs.getString("ssex"));
+	        	 d.setSage(rs.getInt("sage"));
 	        	 d.setWarning(rs.getString("warning"));
 	        	 d.setPassword(rs.getString("password"));
 	        	 d.setSdept(rs.getString("sdept"));

@@ -3,8 +3,8 @@ package com.po;
 public class Student {
 	private String sno;
 	private String sname;
-	private String sex;
-	private Integer age;
+	private String ssex;
+	private Integer sage;
 	private String sdept;
 	private String password;
 	private String warning;
@@ -21,17 +21,17 @@ public class Student {
 	public void setSname(String sname) {
 		this.sname = sname;
 	}
-	public String getSex() {
-		return sex;
+	public String getSsex() {
+		return ssex;
 	}
-	public void setSex(String sex) {
-		this.sex = sex;
+	public void setSsex(String ssex) {
+		this.ssex = ssex;
 	}
-	public Integer getAge() {
-		return age;
+	public Integer getSage() {
+		return sage;
 	}
-	public void setAge(Integer age) {
-		this.age = age;
+	public void setSage(Integer sage) {
+		this.sage = sage;
 	}
 	public String getSdept() {
 		return sdept;
@@ -39,12 +39,12 @@ public class Student {
 	public void setSdept(String sdept) {
 		this.sdept = sdept;
 	}
-	public Student(String sno, String sname, String sex, Integer age, String sdept,String password) {
+	public Student(String sno, String sname, String ssex, Integer sage, String sdept,String password) {
 		super();
 		this.sno = sno;
 		this.sname = sname;
-		this.sex = sex;
-		this.age = age;
+		this.ssex = ssex;
+		this.sage = sage;
 		this.sdept = sdept;
 		this.password = password;
 	}
